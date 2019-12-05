@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using SalesWebMvc.Models;
 using Pomelo.EntityFrameworkCore.MySql;
 using SalesWebMvc.Data;
+using SalesWebMvc.Services;
 
 namespace SalesWebMvc
 {
@@ -42,8 +43,9 @@ namespace SalesWebMvc
                     options.UseMySql(Configuration.GetConnectionString("SalesWebMvcContext"), builder =>
                          builder.MigrationsAssembly("SalesWebMvc")));
 
-            //Registrando esta classe/serviço no sistema de injeção de dependência da aplicação.
+            //Registrando estas classes/serviços no sistema de injeção de dependência da aplicação.
             services.AddScoped<SeedingService>();
+            services.AddScoped<SellerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
